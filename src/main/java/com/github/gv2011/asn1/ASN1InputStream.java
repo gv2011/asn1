@@ -7,18 +7,18 @@ package com.github.gv2011.asn1;
  * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
- * 
+ *
  * Copyright (c) 2000-2015 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
  * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
@@ -38,6 +38,7 @@ import java.io.InputStream;
 
 import com.github.gv2011.asn1.util.io.Streams;
 import com.github.gv2011.util.bytes.Bytes;
+import com.github.gv2011.util.ex.ThrowingSupplier;
 
 /**
  * a general purpose ASN.1 decoder - note: this class differs from the
@@ -245,7 +246,7 @@ public class ASN1InputStream
 
     @Override
     public ASN1Primitive readObject(){
-        final int tag = call(this::read);
+        final int tag = call(()->read());
         if (tag <= 0)
         {
             if (tag == 0)
@@ -326,7 +327,7 @@ public class ASN1InputStream
         {
             tagNo = 0;
 
-            int b = call(s::read);
+            int b = call((ThrowingSupplier<Integer>)()->s.read());
 
             // X.690-0207 8.1.2.4.2
             // "c) bits 7 to 1 of the first subsequent octet shall not all be zero."
@@ -339,7 +340,7 @@ public class ASN1InputStream
             {
                 tagNo |= (b & 0x7f);
                 tagNo <<= 7;
-                b = call(s::read);
+                b = call(()->s.read());
             }
 
             if (b < 0)
@@ -354,7 +355,7 @@ public class ASN1InputStream
     }
 
     static int readLength(final InputStream s, final int limit){
-        int length = call(s::read);
+        int length = call(()->s.read());
         if (length < 0)
         {
             throw new ASN1ParsingException("EOF found when length expected");
@@ -378,7 +379,7 @@ public class ASN1InputStream
             length = 0;
             for (int i = 0; i < size; i++)
             {
-                final int next = call(s::read);
+                final int next = call(()->s.read());
 
                 if (next < 0)
                 {
@@ -429,12 +430,12 @@ public class ASN1InputStream
         int totalRead = 0;
         while (totalRead < len)
         {
-            final int ch1 = call(defIn::read);
+            final int ch1 = call(()->defIn.read());
             if (ch1 < 0)
             {
                 break;
             }
-            final int ch2 = call(defIn::read);
+            final int ch2 = call(()->defIn.read());
             if (ch2 < 0)
             {
                 break;

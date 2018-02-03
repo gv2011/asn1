@@ -4,7 +4,7 @@ package com.github.gv2011.asn1.util.io;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
  * 
@@ -28,9 +28,9 @@ package com.github.gv2011.asn1.util.io;
  * #L%
  */
 
+import static com.github.gv2011.util.ex.Exceptions.call;
 
-import static com.github.gv2011.util.ex.Exceptions.run;
-
+import java.io.IOException;
 import java.io.OutputStream;
 
 import com.github.gv2011.asn1.util.Arrays;
@@ -93,7 +93,7 @@ public class BufferingOutputStream
             while (len >= buf.length)
             {
                 final int off = offset;
-                run(()->other.write(bytes, off, buf.length));
+                call(()->other.write(bytes, off, buf.length));
                 offset += buf.length;
                 len -= buf.length;
             }
@@ -122,14 +122,14 @@ public class BufferingOutputStream
      */
     @Override
     public void flush(){
-        run(()->other.write(buf, 0, bufOff));
-        bufOff = 0;
-        Arrays.fill(buf, (byte)0);
+      call(()->other.write(buf, 0, bufOff));
+      bufOff = 0;
+      Arrays.fill(buf, (byte)0);
     }
 
     @Override
     public void close(){
         try{flush();}
-        finally{run(other::close);}
+        finally{call(other::close);}
     }
 }

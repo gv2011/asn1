@@ -4,7 +4,7 @@ package com.github.gv2011.asn1.util.io;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
  * 
@@ -28,8 +28,7 @@ package com.github.gv2011.asn1.util.io;
  * #L%
  */
 
-
-import static com.github.gv2011.util.ex.Exceptions.run;
+import static com.github.gv2011.util.ex.Exceptions.call;
 
 import java.io.OutputStream;
 
@@ -58,7 +57,7 @@ public class TeeOutputStream
     @Override
     public void write(final byte[] buf)
     {
-      run(()->{
+      call(()->{
         output1.write(buf);
         output2.write(buf);
       });
@@ -67,7 +66,7 @@ public class TeeOutputStream
     @Override
     public void write(final byte[] buf, final int off, final int len)
     {
-      run(()->{
+      call(()->{
         output1.write(buf, off, len);
         output2.write(buf, off, len);
       });
@@ -76,7 +75,7 @@ public class TeeOutputStream
     @Override
     public void write(final int b)
     {
-      run(()->{
+      call(()->{
         output1.write(b);
         output2.write(b);
       });
@@ -85,7 +84,7 @@ public class TeeOutputStream
     @Override
     public void flush()
     {
-      run(()->{
+      call(()->{
         output1.flush();
         output2.flush();
       });
@@ -94,7 +93,7 @@ public class TeeOutputStream
     @Override
     public void close()
     {
-      run(()->{
+      call(()->{
         try{output1.close();}
         finally{output2.close();}
       });

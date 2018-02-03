@@ -4,7 +4,7 @@ package com.github.gv2011.asn1.util.encoders;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
  * 
@@ -28,8 +28,7 @@ package com.github.gv2011.asn1.util.encoders;
  * #L%
  */
 
-
-import static com.github.gv2011.util.ex.Exceptions.run;
+import static com.github.gv2011.util.ex.Exceptions.call;
 
 import java.io.OutputStream;
 
@@ -104,7 +103,7 @@ public class Base64Encoder
           a2 = data.getByte(i + 1) & 0xff;
           a3 = data.getByte(i + 2) & 0xff;
 
-          run(()->{
+          call(()->{
             out.write(encodingTable[(a1 >>> 2) & 0x3f]);
             out.write(encodingTable[((a1 << 4) | (a2 >>> 4)) & 0x3f]);
             out.write(encodingTable[((a2 << 2) | (a3 >>> 6)) & 0x3f]);
@@ -127,7 +126,7 @@ public class Base64Encoder
             b1 = (d1 >>> 2) & 0x3f;
             b2 = (d1 << 4) & 0x3f;
 
-            run(()->{
+            call(()->{
               out.write(encodingTable[b1]);
               out.write(encodingTable[b2]);
               out.write(padding);
@@ -143,7 +142,7 @@ public class Base64Encoder
             b2 = ((d1 << 4) | (d2 >>> 4)) & 0x3f;
             b3 = (d2 << 2) & 0x3f;
 
-            run(()->{
+            call(()->{
               out.write(encodingTable[b1]);
               out.write(encodingTable[b2]);
               out.write(encodingTable[b3]);
@@ -217,7 +216,7 @@ public class Base64Encoder
                 throw new RuntimeException("invalid characters encountered in base64 data");
             }
 
-            run(()->{
+            call(()->{
               out.write((b1 << 2) | (b2 >> 4));
               out.write((b2 << 4) | (b3 >> 2));
               out.write((b3 << 6) | b4);
@@ -295,7 +294,7 @@ public class Base64Encoder
             throw new RuntimeException("invalid characters encountered in base64 data");
           }
 
-          run(()->{
+          call(()->{
             out.write((b1 << 2) | (b2 >> 4));
             out.write((b2 << 4) | (b3 >> 2));
             out.write((b3 << 6) | b4);
@@ -324,7 +323,7 @@ public class Base64Encoder
                 throw new RuntimeException("invalid characters encountered at end of base64 data");
             }
 
-            run(()->out.write((b1 << 2) | (b2 >> 4)));
+            call(()->out.write((b1 << 2) | (b2 >> 4)));
 
             return 1;
         }
@@ -338,7 +337,7 @@ public class Base64Encoder
               throw new RuntimeException("invalid characters encountered at end of base64 data");
             }
 
-            run(()->{
+            call(()->{
               out.write((b1 << 2) | (b2 >> 4));
               out.write((b2 << 4) | (b3 >> 2));
             });
@@ -357,7 +356,7 @@ public class Base64Encoder
                 throw new RuntimeException("invalid characters encountered at end of base64 data");
             }
 
-            run(()->{
+            call(()->{
               out.write((b1 << 2) | (b2 >> 4));
               out.write((b2 << 4) | (b3 >> 2));
               out.write((b3 << 6) | b4);

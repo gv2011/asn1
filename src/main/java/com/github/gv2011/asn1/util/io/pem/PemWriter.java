@@ -4,7 +4,7 @@ package com.github.gv2011.asn1.util.io.pem;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
  * 
@@ -28,8 +28,7 @@ package com.github.gv2011.asn1.util.io.pem;
  * #L%
  */
 
-
-import static com.github.gv2011.util.ex.Exceptions.run;
+import static com.github.gv2011.util.ex.Exceptions.call;
 
 import java.io.BufferedWriter;
 import java.io.Writer;
@@ -144,7 +143,7 @@ public class PemWriter
                 index++;
             }
             final int i0=index;
-            run(()->{
+            call(()->{
               this.write(buf, 0, i0);
               newLine();
             });
@@ -167,12 +166,12 @@ public class PemWriter
 
     @Override
     public void newLine(){
-      run(super::newLine);
+      call(super::newLine);
     }
 
     @Override
     public void write(final String str){
-      run(()->super.write(str));
+      call(()->super.write(str));
     }
 
 

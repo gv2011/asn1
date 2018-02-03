@@ -7,18 +7,18 @@ package com.github.gv2011.asn1;
  * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
- * 
+ *
  * Copyright (c) 2000-2015 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
- * and associated documentation files (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
  * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
@@ -70,7 +70,7 @@ public class ParsingTest{
         "poA1hF4zRh7HF0xVglYoLFqkUR7Pru/qYFnfMKBPuEOOGdgO3MMcAvIZ+w+Ug4THr/6+Vux0TN3wdOB+beObOboLgNE2zaD65lyMFbaulzrEnWjUgIg63CdpQJ2ESaimHGg/GmsipUCndRJ37TbUtn8W112SehsAgrsjiBcuJhw61i4bVfAZEcycq4Y/FlEDxtzoH8WzDoESNbl+r5agLcHGr37BFi81IXS8TLihC1T8b7d6tLb6lpXT+9IR4xAyZTw1IFMDZZEzVmHgYE/Et20/WhkX/oGghkWSpCxR0kynDplk+BEK2oyGKnl+rf4vymhsse2iQ/C99PhaodZjDfuGVSwPLoU0AYyAKaEwmgHPOFbDlrAmNk4iBp+IZYm9guZM2hcQ4GeA5WQyZzw4C1yMywWbdjtL9ZhpClmmPZ28nmwNORAat7tXPJoBBdXFB0gNT/wU7UYIKU5GnAiDIFJ0o8ijnuAMat3AsBki2vxwdypuBq5M6OF9DVA0HRUjOA0l4JHjK8Y282mz3U34PDPQvwCT342uD9cO3uXoSr3T2FnDmsVHz4Q9zYpSjioLmZk9ZTnQWgN5V5Oyat6m"
       )
       .stream()
-      .map(s->ByteUtils.asUtf8(s).decodeBase64())
+      .map(s->ByteUtils.asUtf8(s).content().decodeBase64())
       .collect(toIList())
     ;
   }

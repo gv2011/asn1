@@ -4,7 +4,7 @@ package com.github.gv2011.asn1.util.encoders;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
  * 
@@ -28,9 +28,7 @@ package com.github.gv2011.asn1.util.encoders;
  * #L%
  */
 
-
-
-import static com.github.gv2011.util.ex.Exceptions.run;
+import static com.github.gv2011.util.ex.Exceptions.call;
 
 import java.io.OutputStream;
 
@@ -92,7 +90,7 @@ public class HexEncoder implements Encoder{
         for (int i = off; i < (off + length); i++)
         {
             final int    v = data.getByte(i) & 0xff;
-            run(()->{
+            call(()->{
               out.write(encodingTable[(v >>> 4)]);
               out.write(encodingTable[v & 0xf]);
             });
@@ -158,7 +156,7 @@ public class HexEncoder implements Encoder{
                 throw new RuntimeException("invalid characters encountered in Hex data");
             }
 
-            run(()->out.write((b1 << 4) | b2));
+            call(()->out.write((b1 << 4) | b2));
 
             outLen++;
         }
@@ -214,7 +212,7 @@ public class HexEncoder implements Encoder{
                 throw new RuntimeException("invalid characters encountered in Hex string");
             }
 
-            run(()->out.write((b1 << 4) | b2));
+            call(()->out.write((b1 << 4) | b2));
 
             length++;
         }
