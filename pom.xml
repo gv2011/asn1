@@ -1,26 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
-    <groupId>com.github.gv2011</groupId>
     <artifactId>parent-gv</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <groupId>com.github.gv2011</groupId>
+    <version>0.3.0</version>
   </parent>
-
   <artifactId>asn1</artifactId>
   <version>0.0.5-SNAPSHOT</version>
-
   <name>Vinz ASN.1</name>
   <description>ASN.1 implementation extracted from Bouncy Castle</description>
   <url>https://github.com/gv2011/asn1</url>
-
   <licenses>
     <license>
       <name>Bouncy Castle</name>
       <url>https://www.bouncycastle.org/licence.html</url>
     </license>
   </licenses>
-
   <developers>
     <developer>
       <id>gv2011</id>
@@ -39,18 +36,24 @@
       </roles>
     </developer>
   </developers>
-
   <scm>
     <connection>scm:git:git@github.com:gv2011/asn1.git</connection>
     <developerConnection>scm:git:git@github.com:gv2011/asn1.git</developerConnection>
     <url>https://github.com/gv2011/asn1</url>
-    <tag>HEAD</tag>
   </scm>
-  
-  <properties>
-    <util.version>0.2.2-SNAPSHOT</util.version>
-  </properties>
-
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <configuration>
+          <licenseName>bc</licenseName>
+          <licenseResolver>${project.baseUri}/src/license</licenseResolver>
+          <inceptionYear>2016</inceptionYear>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
       <groupId>com.github.gv2011</groupId>
@@ -70,19 +73,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <licenseName>bc</licenseName>
-          <licenseResolver>${project.baseUri}/src/license</licenseResolver>
-          <inceptionYear>2016</inceptionYear>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
+  <properties>
+    <util.version>0.3.2-SNAPSHOT</util.version>
+  </properties>
 </project>
