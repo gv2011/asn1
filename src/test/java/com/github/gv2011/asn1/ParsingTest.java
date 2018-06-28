@@ -4,21 +4,21 @@ package com.github.gv2011.asn1;
  * #%L
  * Vinz ASN.1
  * %%
- * Copyright (C) 2016 - 2017 Vinz (https://github.com/gv2011)
+ * Copyright (C) 2016 - 2018 Vinz (https://github.com/gv2011)
  * %%
  * Please note this should be read in the same way as the MIT license. (https://www.bouncycastle.org/licence.html)
- *
+ * 
  * Copyright (c) 2000-2015 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
- * and associated documentation files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
+ * and associated documentation files (the "Software"), to deal in the Software without restriction, 
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
  * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
  * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
@@ -29,8 +29,8 @@ package com.github.gv2011.asn1;
  */
 
 
-import static com.github.gv2011.util.CollectionUtils.iCollections;
-import static com.github.gv2011.util.CollectionUtils.toIList;
+import static com.github.gv2011.util.icol.ICollections.listOf;
+import static com.github.gv2011.util.icol.ICollections.toIList;
 
 import java.io.IOException;
 
@@ -49,7 +49,7 @@ public class ParsingTest{
   @Parameters
   public static final IList<Bytes> streams(){
     return
-      iCollections().listOf(
+      listOf(
         "oRNphCO0F+jcMQKC1uMO8qFBPikDDYmtfVGeB45xvbfj1qu696YGjdW2igRnePYM/KkQtADG7gMHIhqBRcl7dBtkejNeolOklPNA3NgsACTiVN9JFUsYq0a5842+TU+U2/6Kt/D0kvz0WmwWFRPHWEWVM9PYOWabGsh28Iucc6s7eEqmr8NEzWUx/jM3dmjpFYVpSpxt2KbbT+yUO0EqFQyy8hQ7JvKRgv1AoWQfPjMsfjkKgxnA8DjenmwXaZnDaKEvQIKQl46L1Yyu3boN082SQliSJMJVgNuNNLFIt5QSUdG1ant5O6f9Yr0niAkAoqGzmqz+LZE1S7RrGHWiQ3DowE9NzviBuaAoI4WdCn1ClMwb9fdEmBMU4C7DJSgs3qaJzPUuaAT9vU3GhZqZ0wcTV5DHxSRzGLqg9JEJRi4qyeuG3Qkg3YBtathl+FiLJ7mVoO3dFIccRuuqp2MpMhfuP1DxHLNLNiUZEhLMQ0CLTGabUISBuyQudVFlKBZIpcLD0k7fKpMPuywrYiDrTinMc2ZP3fOGevoR5fnZ6kZAE5oMTtMNokzBuctGqVapblXNrVMLYbriT538oYz5",
         "KEKVhHxtyUR9D3v5K4IJbVQLAMiVKoK9z7wFWUjzvLFNLg9C/r8zKfBa3YgZrt0Nq64+MxBePMbiNLCnfditc2qUcQZUHnvNnhwT6uGK37JmXg7MvQiKwvi31EIYt6ghqBZVs1iaqc0ep7wuQ16uwSQMlaDdXc9Qf1L0dGO/6eLyREz+p4UR4NOXK+GooQLfMxYL40zJlYcwNyR0rigvIr84WP2IMS2hZjqXtyS6HMM4yUv70hkIorjr7+JC4GtU1MyWuPuNSAGen0AZTaEEXd5sMbqXMqWg3jeM4mzRH1Kb3WdAChO5vMJZPBj9jZZKgXzmxkUh5GlIhUdYgztoNceBzQ3PIc7slCDUw9I2PjB87xsfy7jA5tFtFADs2EUyxUTMCuhilP664jSHgwbrr80k9Xc4sU+MCwCq2nQmcZYcPgKb4M31VJMlKwnZF3JUU2Jtqgg4gbErw58YoBwSkEcMJ2Juhiyx9U36MzxHs9OcTURfpsilMy+mDL8arCDx1knM1KkAHCLjWuJI+p1PvuIypgCwVc+MtGfd7wW8iR1JPJLBiuoZyNJ+xx9htd/HVB+rLtB57H8Gz8W+R00f",
         "Ol9I/rXMwbLpxTY97v70B+HCl2+cojz2574x/cC56A7KGVF13La8RdzOOvSkl338ct9T/blEFa6QwNz3GmF+MoPdH9lncwz+tqixIqGU02Bp5swH0qjbp/Yjaeq91eR6B+9fl+KKrpglBr8S1BrI4Ey5v3AxxJdCWP8Gd+6Sp15/HMYanwlHBpCsW4+Kq8sGJoJXUXpQ/GBUJKs+WjX1zE6PsvF7/B8cByuqE3NJt7x4Oa+qZtF8qNc0CFDNj31Yhdt7JkAoD30IAd+ue9OhImQMCWwFwySRIRJXU3865K2dBR+VhLuI2aKzLh7MlgVKJk6b2P/ZIkc86ksR1sOUiHrs9EdoYuIssAgMc8QGzn4VN8lxopdzQYVG6pbXGS/VQlHkGdyLd+OHt4srz/NTUWiOquVTRxa6GgtlBFfIXikPTb+iT2pZKyKUlBvpgo0BY9vVUadsteHAI5qrFZBrL5ecK/Qtl9hf/M8qEjyjt2aCXe9B96Hg2QR5A53qW2PJW5VzS0AeB3g+zJSPCTpygrBs20q5Xrna0ux2l17r6HT9Q/AXIOkwPZUXXn0d02igS4D6Hxrg3Fhdp+OTXL8G",
