@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>parent-gv</artifactId>
     <groupId>com.github.gv2011</groupId>
-    <version>0.3.0</version>
+    <version>1.0</version>
   </parent>
+  
   <artifactId>asn1</artifactId>
   <version>0.0.5-SNAPSHOT</version>
   <name>Vinz ASN.1</name>
   <description>ASN.1 implementation extracted from Bouncy Castle</description>
   <url>https://github.com/gv2011/asn1</url>
+  
   <licenses>
     <license>
       <name>Bouncy Castle</name>
       <url>https://www.bouncycastle.org/licence.html</url>
     </license>
   </licenses>
+  
   <developers>
     <developer>
       <id>gv2011</id>
@@ -36,29 +40,23 @@
       </roles>
     </developer>
   </developers>
+
   <scm>
     <connection>scm:git:git@github.com:gv2011/asn1.git</connection>
     <developerConnection>scm:git:git@github.com:gv2011/asn1.git</developerConnection>
     <url>https://github.com/gv2011/asn1</url>
   </scm>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <licenseName>bc</licenseName>
-          <licenseResolver>${project.baseUri}/src/license</licenseResolver>
-          <inceptionYear>2016</inceptionYear>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+
+  <properties>
+    <java.release>11</java.release>
+    <util.version>0.6</util.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.github.gv2011</groupId>
-      <artifactId>util</artifactId>
-      <version>${util.version}</version>
+      <artifactId>util-apis</artifactId>
+      <version>0.6</version>
     </dependency>
     <dependency>
       <groupId>com.github.gv2011</groupId>
@@ -68,12 +66,21 @@
     </dependency>
     <dependency>
       <groupId>com.github.gv2011</groupId>
-      <artifactId>util-test</artifactId>
+      <artifactId>util-beans</artifactId>
+      <version>${util.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.gv2011</groupId>
+      <artifactId>jsong</artifactId>
+      <version>${util.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.gv2011</groupId>
+      <artifactId>testutil</artifactId>
       <version>${util.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <properties>
-    <util.version>0.3.11-SNAPSHOT</util.version>
-  </properties>
 </project>
