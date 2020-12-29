@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>parent-gv</artifactId>
@@ -10,7 +8,7 @@
   </parent>
   
   <artifactId>asn1</artifactId>
-  <version>0.0.5-SNAPSHOT</version>
+  <version>0.1</version>
   <name>Vinz ASN.1</name>
   <description>ASN.1 implementation extracted from Bouncy Castle</description>
   <url>https://github.com/gv2011/asn1</url>
@@ -45,6 +43,7 @@
     <connection>scm:git:git@github.com:gv2011/asn1.git</connection>
     <developerConnection>scm:git:git@github.com:gv2011/asn1.git</developerConnection>
     <url>https://github.com/gv2011/asn1</url>
+    <tag>asn1-0.1</tag>
   </scm>
 
   <properties>
