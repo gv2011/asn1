@@ -1,6 +1,5 @@
 package org.bouncycastle.mail.smime.handlers;
 
-import java.awt.datatransfer.DataFlavor;
 import java.io.BufferedInputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
@@ -8,14 +7,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
-import javax.activation.ActivationDataFlavor;
-import javax.activation.DataContentHandler;
-import javax.activation.DataSource;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.internet.ContentType;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMultipart;
+import jakarta.activation.ActivationDataFlavor;
+import jakarta.activation.DataContentHandler;
+import jakarta.activation.DataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.internet.ContentType;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMultipart;
 
 import org.bouncycastle.mail.smime.SMIMEStreamingProcessor;
 import org.bouncycastle.mail.smime.SMIMEUtil;
@@ -24,8 +23,9 @@ public class multipart_signed
     implements DataContentHandler 
 {
     private static final ActivationDataFlavor ADF = new ActivationDataFlavor(MimeMultipart.class, "multipart/signed", "Multipart Signed");
-    private static final DataFlavor[]         DFS = new DataFlavor[] { ADF };
+    private static final ActivationDataFlavor[]         DFS = new ActivationDataFlavor[] { ADF };
     
+    @Override
     public Object getContent(DataSource ds) 
         throws IOException 
     {
@@ -39,7 +39,8 @@ public class multipart_signed
         }
     }
     
-    public Object getTransferData(DataFlavor df, DataSource ds) 
+    @Override
+    public Object getTransferData(ActivationDataFlavor df, DataSource ds) 
         throws IOException 
     {    
         if (ADF.equals(df))
@@ -52,11 +53,13 @@ public class multipart_signed
         }
     }
     
-    public DataFlavor[] getTransferDataFlavors() 
+    @Override
+    public ActivationDataFlavor[] getTransferDataFlavors() 
     {
         return DFS;
     }
     
+    @Override
     public void writeTo(Object obj, String _mimeType, OutputStream os) 
         throws IOException
     {

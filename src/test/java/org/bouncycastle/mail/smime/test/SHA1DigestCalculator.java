@@ -15,16 +15,19 @@ class SHA1DigestCalculator
 {
     private ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
+    @Override
     public AlgorithmIdentifier getAlgorithmIdentifier()
     {
         return new AlgorithmIdentifier(OIWObjectIdentifiers.idSHA1);
     }
 
+    @Override
     public OutputStream getOutputStream()
     {
         return bOut;
     }
 
+    @Override
     public byte[] getDigest()
     {
         byte[] bytes = bOut.toByteArray();

@@ -3,9 +3,9 @@ package org.bouncycastle.mail.smime.examples;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import javax.mail.Session;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
 
 import org.bouncycastle.cms.jcajce.ZlibExpanderProvider;
 import org.bouncycastle.mail.smime.SMIMECompressed;

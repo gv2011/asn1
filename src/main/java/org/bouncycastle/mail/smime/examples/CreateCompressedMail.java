@@ -3,12 +3,12 @@ package org.bouncycastle.mail.smime.examples;
 import java.io.FileOutputStream;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Address;
+import jakarta.mail.Message;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
 
 import org.bouncycastle.cms.jcajce.ZlibCompressor;
 import org.bouncycastle.mail.smime.SMIMECompressedGenerator;

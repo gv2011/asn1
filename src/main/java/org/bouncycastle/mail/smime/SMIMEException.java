@@ -25,6 +25,7 @@ public class SMIMEException
         return e;
     }
      
+    @Override
     public Throwable getCause()
     {
         return e;

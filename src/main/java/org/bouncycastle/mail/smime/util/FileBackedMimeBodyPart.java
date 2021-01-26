@@ -1,14 +1,15 @@
 package org.bouncycastle.mail.smime.util;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetHeaders;
-import javax.mail.internet.MimeBodyPart;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetHeaders;
+import jakarta.mail.internet.MimeBodyPart;
 
 public class FileBackedMimeBodyPart 
     extends MimeBodyPart
@@ -70,6 +71,7 @@ public class FileBackedMimeBodyPart
         this(saveStreamToFile(headers, body, file));
     }
 
+    @Override
     public void writeTo(
         OutputStream out)
         throws IOException, MessagingException

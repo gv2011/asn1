@@ -12,15 +12,15 @@ import java.io.OutputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import javax.activation.CommandMap;
-import javax.activation.MailcapCommandMap;
-import javax.mail.BodyPart;
-import javax.mail.MessagingException;
-import javax.mail.Part;
-import javax.mail.Session;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import jakarta.activation.CommandMap;
+import jakarta.activation.MailcapCommandMap;
+import jakarta.mail.BodyPart;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Part;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.CMSSignedDataParser;
@@ -139,6 +139,7 @@ public class SMIMESignedParser
 
             AccessController.doPrivileged(new PrivilegedAction()
             {
+                @Override
                 public Object run()
                 {
                     CommandMap.setDefaultCommandMap(mc);
@@ -362,6 +363,7 @@ public class SMIMESignedParser
             _file = file;
         }
         
+        @Override
         public void close() 
             throws IOException
         {

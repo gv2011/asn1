@@ -40,11 +40,13 @@ public class AllTests
             super(test);
         }
 
+        @Override
         protected void setUp()
         {
             Security.addProvider(new BouncyCastleProvider());
         }
 
+        @Override
         protected void tearDown()
         {
             Security.removeProvider("BC");

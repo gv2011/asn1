@@ -5,12 +5,6 @@ import java.io.OutputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import javax.activation.CommandMap;
-import javax.activation.MailcapCommandMap;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
@@ -18,6 +12,12 @@ import org.bouncycastle.cms.CMSEnvelopedDataStreamGenerator;
 import org.bouncycastle.cms.CMSException;
 import org.bouncycastle.cms.RecipientInfoGenerator;
 import org.bouncycastle.operator.OutputEncryptor;
+
+import jakarta.activation.CommandMap;
+import jakarta.activation.MailcapCommandMap;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
 
 /**
  * General class for generating a pkcs7-mime message.
@@ -71,6 +71,7 @@ public class SMIMEEnvelopedGenerator
     {
         AccessController.doPrivileged(new PrivilegedAction()
         {
+            @Override
             public Object run()
             {
                 CommandMap commandMap = CommandMap.getDefaultCommandMap();
@@ -188,6 +189,7 @@ public class SMIMEEnvelopedGenerator
             _encryptor = encryptor;
         }
 
+        @Override
         public void write(OutputStream out)
             throws IOException
         {
@@ -234,6 +236,7 @@ public class SMIMEEnvelopedGenerator
         private ASN1ObjectIdentifier dataType;
         private ASN1EncodableVector  recipientInfos;
 
+        @Override
         protected OutputStream open(
             ASN1ObjectIdentifier dataType,
             OutputStream         out,
@@ -268,6 +271,7 @@ public class SMIMEEnvelopedGenerator
             this.cause = cause;
         }
 
+        @Override
         public Throwable getCause()
         {
             return cause;

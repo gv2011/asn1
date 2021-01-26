@@ -3,8 +3,8 @@ package org.bouncycastle.mail.smime.test;
 
 import java.security.Security;
 
-import javax.activation.CommandMap;
-import javax.activation.MailcapCommandMap;
+import jakarta.activation.CommandMap;
+import jakarta.activation.MailcapCommandMap;
 
 import junit.extensions.TestSetup;
 import junit.framework.Test;
@@ -18,6 +18,7 @@ class SMIMETestSetup extends TestSetup
         super(test);
     }
 
+    @Override
     protected void setUp()
     {
         Security
@@ -41,6 +42,7 @@ class SMIMETestSetup extends TestSetup
         CommandMap.setDefaultCommandMap(_mailcap);
     }
 
+    @Override
     protected void tearDown()
     {
         CommandMap.setDefaultCommandMap(originalMap);

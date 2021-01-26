@@ -1,15 +1,14 @@
 package org.bouncycastle.mail.smime.handlers;
 
-import java.awt.datatransfer.DataFlavor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.activation.ActivationDataFlavor;
-import javax.activation.DataContentHandler;
-import javax.activation.DataSource;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeBodyPart;
+import jakarta.activation.ActivationDataFlavor;
+import jakarta.activation.DataContentHandler;
+import jakarta.activation.DataSource;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeBodyPart;
 
 public class x_pkcs7_signature 
     implements DataContentHandler 
@@ -22,21 +21,23 @@ public class x_pkcs7_signature
      */ 
     
     private static final ActivationDataFlavor ADF;
-    private static final DataFlavor[]         ADFs;
+    private static final ActivationDataFlavor[]         ADFs;
     
     static 
     {
         ADF  = new ActivationDataFlavor(MimeBodyPart.class, "application/x-pkcs7-signature", "Signature");
-        ADFs = new DataFlavor[] { ADF };
+        ADFs = new ActivationDataFlavor[] { ADF };
     }
     
+    @Override
     public Object getContent(DataSource _ds) 
         throws IOException 
     {
         return _ds.getInputStream();
     }
     
-    public Object getTransferData(DataFlavor _df, DataSource _ds) 
+    @Override
+    public Object getTransferData(ActivationDataFlavor _df, DataSource _ds) 
         throws IOException 
     {    
         if (ADF.equals(_df)) 
@@ -49,11 +50,13 @@ public class x_pkcs7_signature
         }
     }
     
-    public DataFlavor[] getTransferDataFlavors() 
+    @Override
+    public ActivationDataFlavor[] getTransferDataFlavors() 
     {
         return ADFs;
     }
     
+    @Override
     public void writeTo(Object _obj, String _mimeType, OutputStream _os) 
         throws IOException 
     {

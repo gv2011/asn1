@@ -8,15 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.crypto.KeyGenerator;
-import javax.mail.Header;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Session;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
 
 import org.bouncycastle.cms.CMSEnvelopedGenerator;
 import org.bouncycastle.util.Strings;
+
+import jakarta.mail.Header;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
 
 /**
  * super class of the various generators.
@@ -73,6 +74,7 @@ public class SMIMEGenerator
             MimeMessage     msg = new MimeMessage((Session) null) {
                 // avoid the call of updateMessageID to prevent
                 // DNS issues when trying to evaluate the local host's name
+                @Override
                 protected void updateMessageID() throws MessagingException {
                     // do nothing
                 }

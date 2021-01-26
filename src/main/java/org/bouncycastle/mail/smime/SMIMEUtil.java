@@ -10,20 +10,20 @@ import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 
-import javax.mail.BodyPart;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Part;
-import javax.mail.internet.ContentType;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMultipart;
-
 import org.bouncycastle.asn1.cms.IssuerAndSerialNumber;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateHolder;
 import org.bouncycastle.cms.CMSTypedStream;
 import org.bouncycastle.mail.smime.util.CRLFOutputStream;
 import org.bouncycastle.mail.smime.util.FileBackedMimeBodyPart;
 import org.bouncycastle.util.Strings;
+
+import jakarta.mail.BodyPart;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.Part;
+import jakarta.mail.internet.ContentType;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMultipart;
 
 public class SMIMEUtil
 {
@@ -548,6 +548,7 @@ public class SMIMEUtil
             super(content, file);
         }
 
+        @Override
         public void writeTo(OutputStream out)
             throws MessagingException, IOException
         {
@@ -569,6 +570,7 @@ public class SMIMEUtil
             lastb = -1;
         }
 
+        @Override
         public void write(int i)
             throws IOException
         {
@@ -598,12 +600,14 @@ public class SMIMEUtil
             lastb = i;
         }
 
+        @Override
         public void write(byte[] buf)
             throws IOException
         {
             this.write(buf, 0, buf.length);
         }
 
+        @Override
         public void write(byte buf[], int off, int len)
             throws IOException
         {

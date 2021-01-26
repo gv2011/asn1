@@ -1,6 +1,6 @@
 package org.bouncycastle.mail.smime.util;
 
-import javax.mail.internet.SharedInputStream;
+import jakarta.mail.internet.SharedInputStream;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,11 +71,13 @@ public class SharedFileInputStream
         in.skip(start);
     }
 
+    @Override
     public long getPosition()
     {
         return _position;
     }
 
+    @Override
     public InputStream newStream(long start, long finish)
     {
         try
@@ -112,6 +114,7 @@ public class SharedFileInputStream
         }
     }
     
+    @Override
     public int read(
         byte[] buf) 
         throws IOException
@@ -119,6 +122,7 @@ public class SharedFileInputStream
         return this.read(buf, 0, buf.length);
     }
     
+    @Override
     public int read(
         byte[] buf, 
         int off, 
@@ -153,6 +157,7 @@ public class SharedFileInputStream
         return count;
     }
     
+    @Override
     public int read() 
         throws IOException
     {
@@ -165,11 +170,13 @@ public class SharedFileInputStream
         return in.read();
     }
     
+    @Override
     public boolean markSupported()
     {
         return true;
     }
 
+    @Override
     public long skip(long n)
         throws IOException
     {
@@ -186,6 +193,7 @@ public class SharedFileInputStream
         return count;
     }
 
+    @Override
     public void mark(
         int readLimit)
     {
@@ -193,6 +201,7 @@ public class SharedFileInputStream
         in.mark(readLimit);
     }
     
+    @Override
     public void reset() 
         throws IOException
     {

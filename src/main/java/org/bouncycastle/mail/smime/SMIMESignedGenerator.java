@@ -14,14 +14,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.activation.CommandMap;
-import javax.activation.MailcapCommandMap;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.internet.ContentType;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import jakarta.activation.CommandMap;
+import jakarta.activation.MailcapCommandMap;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.internet.ContentType;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.cryptopro.CryptoProObjectIdentifiers;
@@ -111,6 +111,7 @@ public class SMIMESignedGenerator
     {
         AccessController.doPrivileged(new PrivilegedAction()
         {
+            @Override
             public Object run()
             {
                 CommandMap commandMap = CommandMap.getDefaultCommandMap();
@@ -583,6 +584,7 @@ public class SMIMESignedGenerator
             }
         }
 
+        @Override
         public void write(OutputStream out)
             throws IOException
         {

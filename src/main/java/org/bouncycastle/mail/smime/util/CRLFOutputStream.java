@@ -15,6 +15,7 @@ public class CRLFOutputStream extends FilterOutputStream
         lastb = -1;
     }
 
+    @Override
     public void write(int i)
         throws IOException
     {
@@ -37,12 +38,14 @@ public class CRLFOutputStream extends FilterOutputStream
         lastb = i;
     }
 
+    @Override
     public void write(byte[] buf)
         throws IOException
     {
         this.write(buf, 0, buf.length);
     }
 
+    @Override
     public void write(byte buf[], int off, int len)
         throws IOException
     {

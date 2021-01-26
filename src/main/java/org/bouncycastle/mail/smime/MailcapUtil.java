@@ -1,7 +1,7 @@
 package org.bouncycastle.mail.smime;
 
-import javax.activation.CommandInfo;
-import javax.activation.MailcapCommandMap;
+import jakarta.activation.CommandInfo;
+import jakarta.activation.MailcapCommandMap;
 
 class MailcapUtil
 {

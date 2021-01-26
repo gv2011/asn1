@@ -5,15 +5,15 @@ import java.io.OutputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import javax.activation.CommandMap;
-import javax.activation.MailcapCommandMap;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-
 import org.bouncycastle.cms.CMSCompressedDataGenerator;
 import org.bouncycastle.cms.CMSCompressedDataStreamGenerator;
 import org.bouncycastle.operator.OutputCompressor;
+
+import jakarta.activation.CommandMap;
+import jakarta.activation.MailcapCommandMap;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
 
 /**
  * General class for generating a pkcs7-mime compressed message.
@@ -49,6 +49,7 @@ public class SMIMECompressedGenerator
 
             AccessController.doPrivileged(new PrivilegedAction()
             {
+                @Override
                 public Object run()
                 {
                     CommandMap.setDefaultCommandMap(mc);
@@ -135,6 +136,7 @@ public class SMIMECompressedGenerator
             this.compressor = compressor;
         }
 
+        @Override
         public void write(OutputStream out)
             throws IOException
         {
